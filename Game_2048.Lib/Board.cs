@@ -8,7 +8,7 @@ namespace Game_2048.Lib
         private readonly uint _sizeCol;
 
         //private readonly Block[,] _board;
-        private readonly int?[,] _board;
+        public readonly int?[,] board;
 
         private const int Count = 2;
 
@@ -17,7 +17,7 @@ namespace Game_2048.Lib
             _sizeRow = size;
             _sizeCol = size;
             //_board = new Block[_sizeRow, _sizeCol];
-            _board = new int?[_sizeRow, _sizeCol];
+            board = new int?[_sizeRow, _sizeCol];
             InitBoard();
         }
 
@@ -27,7 +27,7 @@ namespace Game_2048.Lib
             {
                 for (int j = 0; j < _sizeCol; j++)
                 {
-                    _board[i, j] = null;
+                    board[i, j] = null;
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace Game_2048.Lib
             {
                 for (int j = 0; j < _sizeCol; j++)
                 {
-                    if (_board[i, j] is null)
+                    if (board[i, j] is null)
                     {
                         return false;
                     }
@@ -48,7 +48,7 @@ namespace Game_2048.Lib
             return true;
         }
 
-        private bool IsNull(int x, int y) => _board[x, y] is null;
+        public bool IsNull(int x, int y) => board[x, y] is null;
 
         private void InsertBlock(int x, int y, int count)
         {
@@ -58,7 +58,7 @@ namespace Game_2048.Lib
                 //X = x,
                 //Y = y
             };*/
-            _board[x, y] = count;
+            board[x, y] = count;
         }
 
         public void RandomInsertBlock()
@@ -81,19 +81,19 @@ namespace Game_2048.Lib
         {
             for (int i = 0; i < _sizeRow; i++)
             {
-                for (int k = (int)_sizeCol - 2; k > 0; k--)
+                for (int k = (int)_sizeCol - 2; k >= 0; k--)
                 {
                     for (int j = k; j < _sizeCol - 1; j++)
                     {
                         if (IsNull(i, j + 1))
                         {
-                            _board[i, j + 1] = _board[i, j];
-                            _board[i, j] = null;
+                            board[i, j + 1] = board[i, j];
+                            board[i, j] = null;
                         }
-                        else if (_board[i, j] == _board[i, j + 1])
+                        else if (board[i, j] == board[i, j + 1])
                         {
-                            _board[i, j + 1] += _board[i, j];
-                            _board[i, j] = null;
+                            board[i, j + 1] += board[i, j];
+                            board[i, j] = null;
                         }
                     }
                 }

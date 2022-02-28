@@ -6,4 +6,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Game_2048.Lib\Game_2048.Lib.csproj" />
+    </ItemGroup>
+
 </Project>
