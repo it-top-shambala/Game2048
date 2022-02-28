@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:Game_2048.App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="450">
+    <Window.Resources>
+        <ResourceDictionary Source="Colors.xaml"/>
+    </Window.Resources>
+    
     <DockPanel LastChildFill="True">
         <Button x:Name="Top" DockPanel.Dock="Top" Content="Top" Height="25" Click="Top_OnClick"/>
         <Button x:Name="Right" DockPanel.Dock="Right" Content="Right" Width="25" Click="Right_OnClick"/>

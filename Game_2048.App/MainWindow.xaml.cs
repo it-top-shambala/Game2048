@@ -41,7 +41,7 @@ namespace Game_2048.App
                     {
                         val = (int)_board.board[i, j];
                         block.Content = val.ToString();
-                        block.Background = _colorBrushes[val];
+                        block.Style = (Style)this.Resources[val.ToString()];
                     }
                     Board.Children.Add(block);
                 }
